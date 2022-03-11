@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Jeux</title>
+</head>
+<body>
+    <form action="#">
+           <label for="prenom">Prénom du joueur :</label>
+           <input type="text" id="prenom" name="prenom"/>
+           <button id="envoyer" type="submit" name="envoyer">Envoyer</button>
+    </form>
+    <div class="container">
+        <div class="laCarte">
+            <div class="devant"><img src="mystere.png" width="100%" height="100%"></div>
+            <div class="derriere">Derriere</div>
+        </div>
+    </div>
+    <div class="container2">
+        <div class="laCarte2">
+            <div class="devant2"></div>
+        </div>
+    </div>
+    <style type="text/css">
+        .container{
+            position: absolute;
+            width: 250px;
+            height: 320px;
+            top: 50%;
+            left: 15%;
+            transform: translate(-50%,-50%);
+        }
+        .container2{
+            position: absolute;
+            width: 250px;
+            height: 320px;
+            top: 50%;
+            left: 40%;
+            transform: translate(-50%,-50%);
+        }
+        .laCarte{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        .laCarte2{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        .laCarte:hover{
+            transform: rotateY(200deg);
+        }
+        .devant{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: black;
+            color: White;
+            text-align: center;
+            font-family: sans-serif;
+            border-radius: 20px;
+            font-size: 58px;
+            font-weight: bold;
+        }
+        .devant2{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: black;
+            color: White;
+            text-align: center;
+            font-family: sans-serif;
+            border-radius: 20px;
+            font-size: 58px;
+            font-weight: bold;
+        }
+        .derriere{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            text-align: center;
+            background: #fafafa;
+            color: #333;
+            text-align: center;
+            font-family: sans-serif;
+            font-size: 58px;
+            font-weight: bold;
+            transform: rotateY(180deg);
+        }
+    </style>
+<script src="./jquery-3.6.0.js"></script>
+<script>
+    let mystere = ["A",2,3,4,5,6,8,9,10,"V","Q","K"];
+    let randomMystere = mystere[Math.floor(Math.random() * mystere.length)];
+    let saisis = 2;
+    $('.derriere').html(randomMystere);
+    $('.devant2').html(saisis);
+    let btnEnvoyer = document.querySelector("#envoyer");
+    btnEnvoyer.addEventListener("click",()=>{
+    localStorage.setItem("prenom", document.querySelector("#prenom").value);
+    console.log(document.querySelector("#prenom").value);
+    })
+    if (randomMystere>saisis) {
+        console.log(1);
+    }
+    else{
+        console.log(2);
+    }
+    
+</script>
+</body>
+</html>
